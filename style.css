@@ -49,6 +49,14 @@ a { text-decoration: none; color: inherit; }
 
 .top-logo-mini span { color: var(--teal); }
 
+.infinity-logo {
+  color: var(--teal);
+  font-size: 16px;
+  font-weight: bold;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
 .top-socials {
   display: flex;
   gap: 8px;
@@ -65,23 +73,15 @@ a { text-decoration: none; color: inherit; }
   text-transform: uppercase;
   font-weight: bold;
   border-radius: 2px;
+  background-color: var(--teal);
   color: #ffffff;
+  border: none;
   transition: opacity 0.2s, transform 0.1s;
 }
 
 .social-badge:hover {
   opacity: 0.9;
   transform: translateY(-1px);
-}
-
-.social-badge.wa,
-.social-badge.tg,
-.social-badge.ig,
-.social-badge.tt,
-.social-badge.sc { 
-  background-color: var(--teal); 
-  color: #ffffff;
-  border: none;
 }
 
 /* Announcement Bar */
@@ -238,6 +238,10 @@ a { text-decoration: none; color: inherit; }
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--teal-light);
+}
+
+.filter-arrow {
+  display: none;
 }
 
 .clear-btn {
@@ -595,23 +599,6 @@ a { text-decoration: none; color: inherit; }
   transform: scale(1.08);
 }
 
-/* Footer */
-.site-footer {
-  background: var(--dark);
-  color: var(--muted);
-  text-align: center;
-  padding: 30px 24px;
-  font-size: 12px;
-  border-top: 1px solid var(--line);
-  margin-top: 40px;
-}
-
-.site-footer .logo {
-  font-size: 16px;
-  display: block;
-  margin-bottom: 6px;
-}
-
 /* Empty Search State */
 .filter-empty {
   text-align: center;
@@ -756,7 +743,7 @@ a { text-decoration: none; color: inherit; }
 
 .btn-guide-link:hover { color: var(--teal-light); }
 
-/* Responsive & Mobile Menus */
+/* Responsive & Mobile Dropdown System */
 @media (max-width: 1400px) {
   .product-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
@@ -766,11 +753,55 @@ a { text-decoration: none; color: inherit; }
 }
 
 @media (max-width: 820px) {
-  .catalog-layout { flex-direction: column; }
-  .sidebar { width: 100%; position: static; }
-  .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .catalog-layout { 
+    flex-direction: column; 
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .sidebar { 
+    width: 100%; 
+    position: static; 
+  }
+
+  /* Mobile Dropdown Magic */
+  .filter-box {
+    padding: 14px 16px;
+  }
+
+  .filter-header {
+    cursor: pointer;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .filter-arrow {
+    display: inline-block;
+    transition: transform 0.25s;
+  }
+
+  .filter-list {
+    display: none; /* Hidden on phone so products show right at the top */
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+  }
+
+  .filter-box.open .filter-list {
+    display: block; /* Expands when tapped */
+  }
+
+  .filter-box.open .filter-arrow {
+    transform: rotate(180deg);
+  }
+
+  .product-grid { 
+    grid-template-columns: repeat(2, minmax(0, 1fr)); 
+    gap: 12px;
+  }
   
-  /* Mobile Navigation Header System */
+  /* Mobile Nav Menu */
   .menu-toggle { display: flex; }
   
   .main-nav {
@@ -798,26 +829,13 @@ a { text-decoration: none; color: inherit; }
     max-height: 300px;
   }
 
-  .nav-open .menu-toggle span:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
-  }
-  .nav-open .menu-toggle span:nth-child(2) {
-    opacity: 0;
-  }
-  .nav-open .menu-toggle span:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
-  }
+  .nav-open .menu-toggle span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav-open .menu-toggle span:nth-child(2) { opacity: 0; }
+  .nav-open .menu-toggle span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
-  .modal-body {
-    grid-template-columns: 1fr;
-  }
-  .modal-gallery {
-    border-right: none;
-    border-bottom: 1px solid var(--line);
-  }
-  .modal-info {
-    padding: 24px;
-  }
+  .modal-body { grid-template-columns: 1fr; }
+  .modal-gallery { border-right: none; border-bottom: 1px solid var(--line); }
+  .modal-info { padding: 24px; }
 }
 
 @media (max-width: 600px) {
@@ -829,11 +847,4 @@ a { text-decoration: none; color: inherit; }
 
 @media (max-width: 480px) {
   .product-grid { grid-template-columns: 1fr; }
-}
-.infinity-logo {
-  color: var(--teal);
-  font-size: 16px;
-  font-weight: bold;
-  vertical-align: middle;
-  margin-right: 4px;
 }
