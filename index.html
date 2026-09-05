@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OLDSCHOOLFASHIONS — Luxury Catalog</title>
+  <!-- Favicon Fallback (SVG Emoji) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.75em%22 font-size=%22100%22 font-weight=%22bold%22 fill=%22%232ec4b6%22>&#8734;</text></svg>">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Top Utility Bar with Brand Socials & Mini Logo -->
+  <div class="top-utility-bar">
+    <div class="top-bar-inner">
+      <div class="top-logo-mini"><span class="infinity-logo">&infin;</span> OldSchool<span>Fashions</span></div>
+      <div class="top-socials">
+        <a href="https://wa.me/YOUR_PHONE_NUMBER" target="_blank" rel="noopener noreferrer" class="social-badge wa">WhatsApp</a>
+        <a href="https://t.me/oldschoolfashions" target="_blank" rel="noopener noreferrer" class="social-badge tg">Telegram</a>
+        <a href="https://instagram.com/oldschoolfashions" target="_blank" rel="noopener noreferrer" class="social-badge ig">Instagram</a>
+        <a href="https://tiktok.com/@oldschoolfashions" target="_blank" rel="noopener noreferrer" class="social-badge tt">TikTok</a>
+        <a href="https://snapchat.com/add/oldschoolfashions" target="_blank" rel="noopener noreferrer" class="social-badge sc">Snapchat</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo-wrap">
+        <a href="index.html" class="logo">OldSchool<span>Fashions</span></a>
+        <span class="logo-tagline">
+          <img src="https://flagcdn.com/w20/gb.png" class="flag-icon" alt="UK" /> UK &bull; 
+          <img src="https://flagcdn.com/w20/eu.png" class="flag-icon" alt="EU" /> Europe
+        </span>
+      </div>
+      
+      <!-- Mobile Menu Toggle -->
+      <button class="menu-toggle" aria-label="Toggle Navigation" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html" class="active">Catalog</a>
+        <a href="javascript:void(0)" onclick="openSizeGuide()">Size & Shipping</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Announcement Bar (Sliding Below Header) -->
+  <div class="announcement-bar">
+    <div class="announcement-track">
+      <span>🇬🇧 Express Delivery All Over UK &bull; 🇪🇺 Europe</span>
+      <span>•</span>
+      <span>Complimentary Shipping on Orders Over £150</span>
+      <span>•</span>
+      <span>New Drop Friday 6PM GMT</span>
+      <span>•</span>
+      <span>🇬🇧 Express Delivery All Over UK &bull; 🇪🇺 Europe</span>
+      <span>•</span>
+      <span>Complimentary Shipping on Orders Over £150</span>
+      <span>•</span>
+      <span>New Drop Friday 6PM GMT</span>
+      <span>•</span>
+    </div>
+  </div>
+
+  <!-- Main Store Layout -->
+  <main class="catalog-layout">
+    
+    <!-- Left Sidebar: Filters Only -->
+    <aside class="sidebar" id="sidebar">
+      <div class="filter-box">
+        <div class="filter-header">
+          <h3>Filters</h3>
+          <button type="button" class="clear-btn" onclick="resetFilters()">Reset</button>
+        </div>
+
+        <ul class="filter-list">
+          <li><button class="filter-btn active" id="btn-all" onclick="setCategory('all')">All Products</button></li>
+          
+          <li class="filter-group-title">Men</li>
+          <li><button class="filter-btn" id="btn-men-tshirts" onclick="setCategory('men-tshirts')">T-Shirts</button></li>
+          <li><button class="filter-btn" id="btn-men-polo" onclick="setCategory('men-polo')">Polo Shirts</button></li>
+          <li><button class="filter-btn" id="btn-men-shirts" onclick="setCategory('men-shirts')">Shirts</button></li>
+          <li><button class="filter-btn" id="btn-men-trousers" onclick="setCategory('men-trousers')">Trousers</button></li>
+          <li><button class="filter-btn" id="btn-men-suits" onclick="setCategory('men-suits')">Suits</button></li>
+          <li><button class="filter-btn" id="btn-men-shoes" onclick="setCategory('men-shoes')">Shoes</button></li>
+          <li><button class="filter-btn" id="btn-men-bags" onclick="setCategory('men-bags')">Bags</button></li>
+          <li><button class="filter-btn" id="btn-men-accessories" onclick="setCategory('men-accessories')">Accessories</button></li>
+
+          <li class="filter-group-title">Women</li>
+          <li><button class="filter-btn" id="btn-women-dresses" onclick="setCategory('women-dresses')">Dresses</button></li>
+          <li><button class="filter-btn" id="btn-women-tops" onclick="setCategory('women-tops')">Tops</button></li>
+          <li><button class="filter-btn" id="btn-women-shirts" onclick="setCategory('women-shirts')">Shirts</button></li>
+          <li><button class="filter-btn" id="btn-women-trousers" onclick="setCategory('women-trousers')">Trousers</button></li>
+          <li><button class="filter-btn" id="btn-women-shoes" onclick="setCategory('women-shoes')">Shoes</button></li>
+          <li><button class="filter-btn" id="btn-women-bags" onclick="setCategory('women-bags')">Bags</button></li>
+          <li><button class="filter-btn" id="btn-women-jewelry" onclick="setCategory('women-jewelry')">Jewelry</button></li>
+          <li><button class="filter-btn" id="btn-women-accessories" onclick="setCategory('women-accessories')">Accessories</button></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Right Side: Catalog Content -->
+    <section class="catalog-content">
+      
+      <!-- Search Bar -->
+      <div class="search-wrap">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search by brand..." oninput="handleSearch()" />
+      </div>
+
+      <div class="product-grid" id="productGrid"></div>
+      <div class="pagination" id="paginationControls"></div>
+    </section>
+  </main>
+
+  <!-- Product Quick View Modal -->
+  <div class="modal" id="quickViewModal" onclick="closeQuickView(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeQuickView()">&times;</button>
+      <div class="modal-body">
+        <div class="modal-gallery">
+          <div class="product-image" id="modalImageContainer"></div>
+        </div>
+        <div class="modal-info">
+          <span class="tag" id="modalTag"></span>
+          <h2 class="product-title" id="modalTitle"></h2>
+          <p class="sku" id="modalSKU"></p>
+          <p class="price" id="modalPrice"></p>
+          <p class="desc">Handselected premium luxury item from our OldSchool collection. Crafted from high-end fabrics and made to last.</p>
+          
+          <div class="modal-actions">
+            <a href="#" target="_blank" class="btn btn-wa" id="modalWABtn">Order on WhatsApp</a>
+            <button type="button" class="btn-guide-link" onclick="openSizeGuide()">View Size & Shipping Guide</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Size Guide & Shipping Modal -->
+  <div class="modal" id="sizeGuideModal" onclick="closeSizeGuide(event)">
+    <div class="modal-content size-modal-content" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeSizeGuide()">&times;</button>
+      
+      <div class="guide-tabs">
+        <button class="guide-tab-btn active" onclick="switchGuideTab('men-size', this)">Men's Sizing</button>
+        <button class="guide-tab-btn" onclick="switchGuideTab('women-size', this)">Women's Sizing</button>
+        <button class="guide-tab-btn" onclick="switchGuideTab('shipping-info', this)">Shipping & Delivery</button>
+      </div>
+
+      <div class="guide-body">
+        <!-- Men's Sizing Tab -->
+        <div class="guide-tab-content active" id="tab-men-size">
+          <h3>Men's Clothing & Tailoring</h3>
+          <table class="guide-table">
+            <thead>
+              <tr>
+                <th>Size</th>
+                <th>Chest (Inches)</th>
+                <th>Waist (Inches)</th>
+                <th>EU / IT</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Small (S)</td><td>36 - 38"</td><td>30 - 32"</td><td>46 - 48</td></tr>
+              <tr><td>Medium (M)</td><td>38 - 40"</td><td>32 - 34"</td><td>48 - 50</td></tr>
+              <tr><td>Large (L)</td><td>40 - 42"</td><td>34 - 36"</td><td>50 - 52</td></tr>
+              <tr><td>X-Large (XL)</td><td>42 - 44"</td><td>36 - 38"</td><td>52 - 54</td></tr>
+              <tr><td>XX-Large (XXL)</td><td>44 - 46"</td><td>38 - 40"</td><td>54 - 56</td></tr>
+            </tbody>
+          </table>
+          <p class="guide-note">Tip: If you are between sizes, we recommend sizing up for a classic tailored drape.</p>
+        </div>
+
+        <!-- Women's Sizing Tab -->
+        <div class="guide-tab-content" id="tab-women-size">
+          <h3>Women's Dresses & Tops</h3>
+          <table class="guide-table">
+            <thead>
+              <tr>
+                <th>Size</th>
+                <th>UK Size</th>
+                <th>Bust (Inches)</th>
+                <th>Waist (Inches)</th>
+                <th>Hips (Inches)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>XS</td><td>UK 6 - 8</td><td>31 - 33"</td><td>24 - 26"</td><td>34 - 36"</td></tr>
+              <tr><td>S</td><td>UK 8 - 10</td><td>33 - 35"</td><td>26 - 28"</td><td>36 - 38"</td></tr>
+              <tr><td>M</td><td>UK 10 - 12</td><td>35 - 37"</td><td>28 - 30"</td><td>38 - 40"</td></tr>
+              <tr><td>L</td><td>UK 12 - 14</td><td>37 - 39"</td><td>30 - 32"</td><td>40 - 42"</td></tr>
+              <tr><td>XL</td><td>UK 14 - 16</td><td>39 - 41"</td><td>32 - 34"</td><td>42 - 44"</td></tr>
+            </tbody>
+          </table>
+          <p class="guide-note">Tip: Message us on WhatsApp with your exact height and measurements for instant fit advice.</p>
+        </div>
+
+        <!-- Shipping Tab -->
+        <div class="guide-tab-content" id="tab-shipping-info">
+          <h3>Worldwide Shipping Timelines</h3>
+          <div class="shipping-grid">
+            <div class="shipping-card">
+              <h4>🇬🇧 United Kingdom</h4>
+              <p class="ship-time">2 – 3 Business Days</p>
+              <p class="ship-price">Free on orders over £150 (or £4.99 standard tracked)</p>
+            </div>
+            <div class="shipping-card">
+              <h4>🇪🇺 Europe & EU</h4>
+              <p class="ship-time">4 – 6 Business Days</p>
+              <p class="ship-price">Tracked Express Courier (£9.99)</p>
+            </div>
+            <div class="shipping-card">
+              <h4>🌍 Worldwide & US</h4>
+              <p class="ship-time">5 – 8 Business Days</p>
+              <p class="ship-price">DHL / FedEx Express Air (£14.99)</p>
+            </div>
+          </div>
+          <p class="guide-note">All orders are discreetly boxed with insurance and full tracking link sent via WhatsApp immediately upon dispatch.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/YOUR_PHONE_NUMBER" class="floating-wa" target="_blank" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24"><path fill="#fff" d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.333 4.982L2 22l5.202-1.362a9.923 9.923 0 004.805 1.232h.005c5.505 0 9.99-4.479 9.99-9.986 0-2.67-1.037-5.178-2.924-7.067C17.194 2.928 14.686 2 12.012 2zm5.794 14.285c-.254.71-1.46 1.393-2.014 1.448-.5.05-1.144.075-1.85-.145a11.1 11.1 0 01-4.708-3.08 10.3 10.3 0 01-2.457-3.957c-.365-.963.023-1.488.423-1.89.176-.176.39-.413.52-.619.13-.206.17-.35.253-.515.084-.165.042-.31-.02-.454-.063-.144-.558-1.343-.765-1.838-.201-.484-.407-.417-.557-.425-.145-.008-.31-.01-.475-.01s-.433.06-.66.31c-.227.25-.866.845-.866 2.062 0 1.216.887 2.394 1.01 2.56.124.165 1.745 2.664 4.227 3.733.59.255 1.05.407 1.41.52.593.189 1.134.162 1.56.077.476-.093 1.46-.598 1.666-1.176.206-.578.206-1.073.144-1.176-.062-.103-.227-.165-.515-.29-.289-.124-1.702-.84-1.97-.938-.269-.103-.465-.144-.66.144-.197.29-.764.939-.939 1.135-.175.196-.35.217-.64.093-.29-.124-1.222-.45-2.327-1.434-.86-.525-1.44-1.173-1.61-1.462-.17-.29-.018-.447.124-.587.128-.124.289-.33.434-.495.144-.165.196-.269.29-.454.093-.186.046-.35-.02-.495-.067-.145-.558-1.343-.765-1.838z"/></svg>
+  </a>
+
+  <!-- Connect and Render -->
+  <script src="products.js"></script>
+  <script>
+    const PRODUCTS_PER_PAGE = 40;
+    let currentCategory = 'all';
+    let currentPage = 1;
+    let searchQuery = '';
+
+    const grid = document.getElementById('productGrid');
+    const paginationContainer = document.getElementById('paginationControls');
+
+    function changeSlide(e, btn, direction) {
+      e.preventDefault();
+      e.stopPropagation();
+      const parent = btn.closest('.product-image');
+      const slides = parent.querySelectorAll('.slide-image');
+      let activeIndex = Array.from(slides).findIndex(img => img.classList.contains('active'));
+      
+      slides[activeIndex].classList.remove('active');
+      let nextIndex = (activeIndex + direction + slides.length) % slides.length;
+      slides[nextIndex].classList.add('active');
+    }
+
+    function setCategory(category) {
+      currentCategory = category;
+      currentPage = 1;
+
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.getElementById(`btn-${category}`);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      render();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function setPage(page) {
+      currentPage = page;
+      render();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function handleSearch() {
+      searchQuery = document.getElementById('searchInput').value.toLowerCase().trim();
+      currentPage = 1;
+      render();
+    }
+
+    function resetFilters() {
+      document.getElementById('searchInput').value = '';
+      searchQuery = '';
+      setCategory('all');
+    }
+
+    function toggleMobileMenu() {
+      const header = document.querySelector('.site-header');
+      header.classList.toggle('nav-open');
+    }
+
+    // Quick View Modal
+    function openQuickView(e, code) {
+      if (e.target.closest('.btn-wa') || e.target.closest('.slider-arrow')) return;
+
+      const p = products.find(prod => prod.code === code);
+      if (!p) return;
+
+      const photoList = Array.isArray(p.img) ? p.img : [p.img];
+      const isMulti = photoList.length > 1;
+
+      const slidesHtml = photoList.map((src, idx) => `
+        <img src="${src}" class="slide-image ${idx === 0 ? 'active' : ''}" alt="${p.title}" onerror="this.src='https://via.placeholder.com/400x500/121615/7fe3d8?text=${encodeURIComponent(p.title)}'" />
+      `).join('');
+
+      const arrowsHtml = isMulti ? `
+        <button type="button" class="slider-arrow slider-prev" onclick="changeSlide(event, this, -1)">&larr;</button>
+        <button type="button" class="slider-arrow slider-next" onclick="changeSlide(event, this, 1)">&rarr;</button>
+      ` : '';
+
+      document.getElementById('modalImageContainer').innerHTML = slidesHtml + arrowsHtml;
+      document.getElementById('modalTag').innerText = p.tag;
+      document.getElementById('modalTitle').innerText = p.title;
+      document.getElementById('modalSKU').innerText = `Product Code: ${p.code}`;
+      document.getElementById('modalPrice').innerText = p.price;
+
+      const waMsg = encodeURIComponent(`Hello OldSchoolFashions, I want to order: ${p.title} (Code: ${p.code})`);
+      document.getElementById('modalWABtn').href = `https://wa.me/${WHATSAPP_PHONE}?text=${waMsg}`;
+
+      document.getElementById('quickViewModal').classList.add('active');
+    }
+
+    function closeQuickView() {
+      document.getElementById('quickViewModal').classList.remove('active');
+    }
+
+    // Size Guide & Shipping Modal Controls
+    function openSizeGuide() {
+      document.getElementById('sizeGuideModal').classList.add('active');
+    }
+
+    function closeSizeGuide() {
+      document.getElementById('sizeGuideModal').classList.remove('active');
+    }
+
+    function switchGuideTab(tabId, btn) {
+      document.querySelectorAll('.guide-tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.guide-tab-content').forEach(c => c.classList.remove('active'));
+      
+      btn.classList.add('active');
+      document.getElementById(`tab-${tabId}`).classList.add('active');
+    }
+
+    function render() {
+      const filtered = products.filter(p => {
+        const matchesCategory = currentCategory === 'all' || p.cat === currentCategory;
+        const matchesSearch = p.title.toLowerCase().includes(searchQuery) || 
+                              p.code.toLowerCase().includes(searchQuery) ||
+                              p.tag.toLowerCase().includes(searchQuery);
+        return matchesCategory && matchesSearch;
+      });
+
+      const totalPages = Math.ceil(filtered.length / PRODUCTS_PER_PAGE) || 1;
+      if (currentPage > totalPages) currentPage = totalPages;
+
+      const startIndex = (currentPage - 1) * PRODUCTS_PER_PAGE;
+      const visibleSubset = filtered.slice(startIndex, startIndex + PRODUCTS_PER_PAGE);
+
+      if (visibleSubset.length === 0) {
+        grid.innerHTML = `<div class="filter-empty"><p>No luxury items match your criteria.</p></div>`;
+        paginationContainer.innerHTML = '';
+        return;
+      }
+
+      grid.innerHTML = visibleSubset.map(p => {
+        const photoList = Array.isArray(p.img) ? p.img : [p.img];
+        const isMulti = photoList.length > 1;
+
+        const slidesHtml = photoList.map((src, idx) => `
+          <img src="${src}" class="slide-image ${idx === 0 ? 'active' : ''}" alt="${p.title}" onerror="this.src='https://via.placeholder.com/400x500/121615/7fe3d8?text=${encodeURIComponent(p.title)}'" />
+        `).join('');
+
+        const arrowsHtml = isMulti ? `
+          <button type="button" class="slider-arrow slider-prev" onclick="changeSlide(event, this, -1)">&larr;</button>
+          <button type="button" class="slider-arrow slider-next" onclick="changeSlide(event, this, 1)">&rarr;</button>
+        ` : '';
+
+        const waMsg = encodeURIComponent(`Hello OldSchoolFashions, I want to order: ${p.title} (Code: ${p.code})`);
+
+        return `
+          <article class="product-card" data-category="${p.cat}" onclick="openQuickView(event, '${p.code}')" style="cursor: pointer;">
+            <div class="product-image">
+              ${slidesHtml}
+              ${arrowsHtml}
+            </div>
+            <div class="product-info">
+              <span class="tag">${p.tag}</span>
+              <h3 class="product-title">${p.title}</h3>
+              <p class="price">${p.price}</p>
+              <a href="https://wa.me/${WHATSAPP_PHONE}?text=${waMsg}" target="_blank" class="btn btn-wa">Order on WhatsApp</a>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      paginationContainer.innerHTML = '';
+      if (totalPages <= 1) return;
+
+      const prevLink = document.createElement('a');
+      prevLink.href = '#';
+      prevLink.className = 'page-link' + (currentPage === 1 ? ' disabled' : '');
+      prevLink.innerHTML = '&larr; Previous';
+      prevLink.onclick = (e) => { e.preventDefault(); if (currentPage > 1) setPage(currentPage - 1); };
+      paginationContainer.appendChild(prevLink);
+
+      for (let i = 1; i <= totalPages; i++) {
+        const pageLink = document.createElement('a');
+        pageLink.href = '#';
+        pageLink.className = 'page-link' + (currentPage === i ? ' active' : '');
+        pageLink.innerText = i;
+        pageLink.onclick = (e) => { e.preventDefault(); setPage(i); };
+        paginationContainer.appendChild(pageLink);
+      }
+
+      const nextLink = document.createElement('a');
+      nextLink.href = '#';
+      nextLink.className = 'page-link' + (currentPage === totalPages ? ' disabled' : '');
+      nextLink.innerHTML = 'Next &rarr;';
+      nextLink.onclick = (e) => { e.preventDefault(); if (currentPage < totalPages) setPage(currentPage + 1); };
+      paginationContainer.appendChild(nextLink);
+    }
+
+    render();
+  </script>
+</body>
+</html>
